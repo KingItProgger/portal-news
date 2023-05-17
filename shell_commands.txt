@@ -1,0 +1,47 @@
+u1=User.objects.create_user('Dima')
+u2=User.objects.create_user('Vanya')
+ author1=Author.objects.create(author=u1)
+ author2=Author.objects.create(author=u2)
+Category.objects.create(topic='IT')
+Category.objects.create(topic='Sport')
+Category.objects.create(topic='Politic')
+Category.objects.create(topic='Weather')
+Post.objects.create(author=author1,category='article', title='somearttitle1',text='somearticletext1')
+Post.objects.create(author=author3,category='article', title='somearttitle2',text='somearticletext2')
+Post.objects.create(author=author1,category='news', title='somenewstitle',text='somenewstext')
+Post.objects.get(id=1).categories.add(Category.objects.get(id=1))
+Post.objects.get(id=1).categories.add(Category.objects.get(id=3))
+Post.objects.get(id=2).categories.add(Category.objects.get(id=2))
+Post.objects.get(id=2).categories.add(Category.objects.get(id=4))
+Post.objects.get(id=3).categories.add(Category.objects.get(id=2))
+Post.objects.get(id=3).categories.add(Category.objects.get(id=3))
+Comment.objects.create(post=Post.objects.get(id=1),user=Author.objects.get(id=1).author, text='dsffsfdsf')
+Comment.objects.create(post=Post.objects.get(id=2),user=Author.objects.get(id=2).author, text='dsffsfdsf')
+Comment.objects.create(post=Post.objects.get(id=3),user=Author.objects.get(id=1).author, text='dsffsfdsf')
+Comment.objects.create(post=Post.objects.get(id=1),user=Author.objects.get(id=2).author, text='dsffsfdsf')
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).dislike()
+Post.objects.get(id=2).like()
+Post.objects.get(id=2).like()
+Post.objects.get(id=1).like()
+Post.objects.get(id=1).dislike()
+Post.objects.get(id=1).dislike()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=3).dislike()
+a=Author.objects.get(id=1)
+a.update_rating()
+A=Author.objects.order_by('-rating')[:1]
+for i in A:
+	i.author.username
+N=Post.objects.order('-rating')[:1]
+for j in N:
+	N.datetime
+	N.author.author.username
+	N.rating
+	N.title
+	N.preview()
+	
+	
